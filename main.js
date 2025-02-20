@@ -1,17 +1,33 @@
-let scoreKey1 = "score1"
-let scoreKey2 = "score2"
-let Student = function(name,age,score1,score2){
-   this.name=name;
-   this.age = age;
-   this.score = {
-      [scoreKey1]:score1,
-      [scoreKey2]:score2
+let promise = new Promise(function(resolve,reject){
+   let rd = 6;
+   console.log(rd);
+   if(rd%2==0){
+      resolve(rd);
    }
-   this.getInfo= function(){
-      return `ten : ${this.name} tuoi: ${age}, diem so 1: ${this.score[scoreKey1]}, diem so2 : ${this.score[scoreKey2]}`
+   else{
+      reject(rd);
    }
-}
-let student1 = new Student("Tung",16,2,2);
-let student2 = new Student("Toan",17,3,4);
-let student3 = new Student("Tuan",18,9,10);
-let student4 = new Student("Tien",19,8,8);
+})
+// Su dung code co san, hay viet promise sao cho 
+// sau khi qua lần then đầu tiên, kết quả bị chia 2
+// Nếu kết qủa ra số lẻ thì lập tức rơi vào catch
+promise.then(
+   function(data){
+      console.log("Ban Random duoc "+data+" diem, Xin chuc mung");
+      return data/2;
+   }
+).then(
+   function(data){
+      console.log("Ban Random duoc "+data+" diem, Xin chuc mung lan 2");
+   }
+)
+.catch(
+   function(data){
+      console.log("Ban Random duoc "+data+" diem, Xin chia buon");
+   }
+)
+.finally(
+   function(){
+      console.log("Done");
+   }
+)
