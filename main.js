@@ -1,33 +1,36 @@
-let promise = new Promise(function(resolve,reject){
-   let rd = 6;
-   console.log(rd);
-   if(rd%2==0){
-      resolve(rd);
-   }
-   else{
-      reject(rd);
-   }
-})
-// Su dung code co san, hay viet promise sao cho 
-// sau khi qua lần then đầu tiên, kết quả bị chia 2
-// Nếu kết qủa ra số lẻ thì lập tức rơi vào catch
-promise.then(
-   function(data){
-      console.log("Ban Random duoc "+data+" diem, Xin chuc mung");
-      return data/2;
-   }
-).then(
-   function(data){
-      console.log("Ban Random duoc "+data+" diem, Xin chuc mung lan 2");
-   }
-)
-.catch(
-   function(data){
-      console.log("Ban Random duoc "+data+" diem, Xin chia buon");
-   }
-)
-.finally(
-   function(){
-      console.log("Done");
-   }
-)
+async function LoadSync(){
+    let res = await fetch("http://localhost:3000/posts");
+    let posts = await res.json();
+    let body = document.getElementById("body");
+    body.innerHTML ="";
+    for (const post of posts) {
+        body.innerHTML+=ConvertFromObjToHTML(post);
+    }
+    //console.log(posts);
+}
+async function Save(){
+    let obj = {
+        id: document.getElementById("id").value,
+        title: document.getElementById("title").value,
+        views: document.getElementById("views").value,
+    }
+    let res = await fetch("http://localhost:3000/posts",
+    {
+        method:'POST',
+        body:JSON.stringify(obj),
+        headers:{
+            "Content-Type":"application/json"
+        }
+    });
+    LoadSync();
+}
+function ConvertFromObjToHTML(post){
+    let string = '<tr>';
+    string += `<td>${post.id}</td>`;
+    string += `<td>${post.title}</td>`;
+    string += `<td>${post.views}</td>`
+    string += '</tr>';
+    return string;
+}
+LoadSync();
+
