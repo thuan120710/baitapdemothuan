@@ -50,22 +50,27 @@
   ],
   "authors": [
     {
+      "id":1,
       "name": "Alice",
       "postCount": 1
     },
     {
+      "id":2,
       "name": "Bob",
       "postCount": 1
     },
     {
+      "id":3,
       "name": "Charlie",
       "postCount": 1
     },
     {
+      "id":4,
       "name": "David",
       "postCount": 1
     },
     {
+      "id":5,
       "name": "Eve",
       "postCount": 1
     }
