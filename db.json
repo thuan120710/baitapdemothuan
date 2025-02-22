@@ -48,6 +48,28 @@
       "postId": "1"
     }
   ],
+  "authors": [
+    {
+      "name": "Alice",
+      "postCount": 1
+    },
+    {
+      "name": "Bob",
+      "postCount": 1
+    },
+    {
+      "name": "Charlie",
+      "postCount": 1
+    },
+    {
+      "name": "David",
+      "postCount": 1
+    },
+    {
+      "name": "Eve",
+      "postCount": 1
+    }
+],
   "profile": {
     "name": "typicode"
   }
