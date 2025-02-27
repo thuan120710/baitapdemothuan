@@ -1,3 +1,4 @@
+const Student = require("../models/studentModel")
 let dataUser = [{
     id:1,
     name:"Tung"
@@ -18,7 +19,13 @@ let dataPost = [{
     id:3,
     name:"Post3"
 }]
+
 module.exports = {
     dataUser:dataUser,
-    dataPost:dataPost
+    dataPost:dataPost,
+    dataStudent : [
+        new Student("Tung","21DTHA1"),
+        new Student("Tung2","21DTHA2"),
+        new Student("Tung3","21DTHA3")
+    ]
 }

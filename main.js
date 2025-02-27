@@ -7,6 +7,7 @@ let users = dataFile.defaultData;
 
 app.use('/users',require("./routers/users"))
 app.use('/posts',require("./routers/posts"))
+app.use('/students',require("./routers/students"))
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
