@@ -1,12 +1,23 @@
-const mongoose = require("mongoose");
+let mongoose = require("mongoose");
 
-const categorySchema = new mongoose.Schema(
+let categorySchema = new mongoose.Schema(
   {
-    name: { type: String, unique: true, required: true },
-    description: { type: String, default: "" },
-    isDeleted: { type: Boolean, default: false }, // Thêm cờ xóa mềm
+    name: {
+      type: String,
+      unique: true,
+      required: true,
+    },
+    description: {
+      type: String,
+      default: "",
+    },
+    isDeleted: {
+      type: Boolean,
+      default: false,
+    },
   },
-  { timestamps: true }
+  {
+    timestamps: true,
+  }
 );
-
-module.exports = mongoose.model("Category", categorySchema);
+module.exports = mongoose.model("category", categorySchema);
