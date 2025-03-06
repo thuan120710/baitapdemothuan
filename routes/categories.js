@@ -24,6 +24,22 @@ router.get("/:id", async (req, res) => {
   }
 });
 
+// Cập nhật danh mục theo ID
+router.put("/:id", async (req, res) => {
+  try {
+    let updatedCategory = await Category.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true, runValidators: true }
+    );
+
+    if (!updatedCategory) throw new Error("Danh mục không tồn tại");
+
+    res.status(200).json({ success: true, data: updatedCategory });
+  } catch (error) {
+    res.status(400).json({ success: false, message: error.message });
+  }
+});
 // Tạo danh mục mới
 router.post("/", async (req, res) => {
   try {
